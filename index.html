@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <title>Sistema</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+        <div class="main-layout">
+            <div class="left-sidebar">
+                <div class="sale-info">
+                    <div>Código da Venda: <span class="sale-code" id="sale-code"></span></div>
+                    <div>Data: <span id="sale-date"></span></div>
+                </div>
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Dados do Cliente
+                    </div>
+                    <div class="accordion-content">
+                        <div class="customer-form">
+                            <form id="customer-form">
+                                <div class="form-group">
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" id="cpf" name="cpf" required 
+                                           placeholder="000.000.000-00" 
+                                           maxlength="14">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-name">Nome:</label>
+                                    <input type="text" id="customer-name" name="customerName" 
+                                           required placeholder="Nome completo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-date">Data:</label>
+                                    <input type="date" id="customer-date" name="customerDate" 
+                                           required>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Pagamento
+                    </div>
+                    <div class="accordion-content">
+                        <div class="payment-section">
+                            <div class="payment-methods">
+                                <button class="payment-method" data-method="credit">Cartão de Crédito</button>
+                                <button class="payment-method" data-method="debit">Cartão de Débito</button>
+                                <button class="payment-method" data-method="pix">PIX</button>
+                                <button class="payment-method" data-method="money">Dinheiro</button>
+                            </div>
+
+                            <div id="credit-payment" class="payment-details">
+                                <input type="text" class="payment-input" placeholder="Número do Cartão">
+                                <input type="text" class="payment-input" placeholder="Nome no Cartão">
+                                <input type="text" class="payment-input" placeholder="Validade (MM/AA)">
+                                <input type="text" class="payment-input" placeholder="CVV">
+                            </div>
+
+                            <div id="debit-payment" class="payment-details">
+                                <input type="text" class="payment-input" placeholder="Número do Cartão">
+                                <input type="text" class="payment-input" placeholder="Nome no Cartão">
+                                <input type="text" class="payment-input" placeholder="Validade (MM/AA)">
+                                <input type="text" class="payment-input" placeholder="CVV">
+                            </div>
+
+                            <div id="pix-payment" class="payment-details">
+                                <div style="text-align: center;">
+                                    <svg width="200" height="200" viewBox="0 0 200 200">
+                                        <rect width="200" height="200" fill="#f0f0f0"/>
+                                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">QR Code PIX</text>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div id="money-payment" class="payment-details">
+                                <input type="number" class="payment-input" placeholder="Valor em Dinheiro">
+                                <div>Troco: R$ <span id="change">0.00</span></div>
+                            </div>
+
+                            <button class="process-payment-btn" onclick="processPayment()">Finalizar Pagamento</button>
+                            <div class="payment-success">Pagamento realizado com sucesso!</div>
+                            <div class="payment-error">Erro no pagamento. Tente novamente.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="user-section">
+                    <div class="user-info">
+                        <div class="user-avatar">Jr</div>
+                        <div class="user-details">
+                            <div class="user-name">Oscar Jr</div>
+                            <div class="user-code">ID: #12345</div>
+                        </div>
+                    </div>
+                </div>
+                <h1>Produto</h1>
+                <div class="input-section">
+                    <input type="text" id="barcode-input" placeholder="Escaneie o código de barras ou digite o nome do produto...">
+                    <button class="search-btn" onclick="searchProducts()">
+                        Pesquisar
+                    </button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+                
+                <div class="cart">
+                    <h2>Carrinho de Compras</h2>
+                    <ul class="cart-items" id="cart-items">
+                        <!-- Items do carrinho serão inseridos aqui -->
+                    </ul>
+                    <div class="cart-total">
+                        Subtotal: R$ <span id="total">0.00</span>
+                        <div class="discount-section">
+                            <label>Desconto (%):
+                                <input type="number" id="discount-input" min="0" max="100" step="1">
+                                <button onclick="applyDiscount()">Aplicar</button>
+                            </label>
+                            <div>Total com desconto: R$ <span id="final-total" class="final-total">0.00</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,395 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+.left-sidebar {
+    width: 20%;
+}
+
+.accordion-section {
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header:hover {
+    background: #45a049;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.accordion-content.active {
+    max-height: 1000px;
+}
+
+.accordion-header::after {
+    content: '▼';
+    font-size: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+
+.accordion-header.active::after {
+    transform: rotate(180deg);
+}
+
+.customer-form {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.main-content {
+    width: 80%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.user-section {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    text-align: right;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.user-details {
+    text-align: left;
+}
+
+.user-code {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.input-section {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#barcode-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.search-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-btn:hover {
+    background: #45a049;
+}
+
+.search-results {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    width: calc(100% - 120px);
+    display: none;
+    z-index: 1000;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.search-result-item:hover {
+    background: #f5f5f5;
+}
+
+.cart {
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    animation: slideIn 0.3s ease-out;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.quantity-btn:hover {
+    background: #45a049;
+}
+
+.quantity {
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.cart-total {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background: #cc0000;
+}
+
+.payment-section {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.payment-method {
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s;
+}
+
+.payment-method.selected {
+    background: #4CAF50;
+    color: white;
+}
+
+.payment-details {
+    display: none;
+    margin-top: 15px;
+}
+
+.payment-details.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.payment-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.process-payment-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.process-payment-btn:hover {
+    background: #45a049;
+}
+
+.payment-success {
+    display: none;
+    background: #dff0d8;
+    color: #3c763d;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.payment-error {
+    display: none;
+    background: #f2dede;
+    color: #a94442;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.discount-section {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.discount-section input {
+    padding: 8px;
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+.discount-section button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.discount-section button:hover {
+    background: #45a049;
+}
+
+.final-total {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.sale-info {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sale-code {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4CAF50;
+}
